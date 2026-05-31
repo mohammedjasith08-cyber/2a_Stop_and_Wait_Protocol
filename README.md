@@ -17,18 +17,26 @@ Reg no:212225230180
 client.py
 ```
 import socket
-s=socket.socket()
-s.bind(('localhost',8000))
+
+s = socket.socket()
+
+s.bind(('localhost', 6000))
+
 s.listen(5)
-c,addr=s.accept()
+
+c, addr = s.accept()
+
 while True:
-    i=input("Enter a data: ")
+    i = input("Enter a data: ")
+
     c.send(i.encode())
 
-    ack=c.recv(1024).decode()
+    ack = c.recv(1024).decode()
+
     if ack:
         print(ack)
         continue
+
     else:
         c.close()
         break
@@ -37,19 +45,18 @@ while True:
 server.py
 ```
 import socket
-s=socket.socket()
-s.connect(('localhost',8000))
+
+s = socket.socket()
+
+s.connect(('localhost', 6000))
+
 while True:
     print(s.recv(1024).decode())
-    s.send("Acknowledgement Recived".encode())
+
+    s.send("Acknowledgement Received".encode())
 ```
 ## OUTPUT
-client
-<img width="1024" height="369" alt="image" src="https://github.com/user-attachments/assets/a88c348b-35bb-4211-bc12-1de08a710e52" />
-server
-<img width="2170" height="725" alt="image" src="https://github.com/user-attachments/assets/bdb6d66e-8950-415a-916b-f0fd9e48b0e1" />
-
-
+<img width="1920" height="1080" alt="Screenshot (33)" src="https://github.com/user-attachments/assets/fefc61f4-4db9-4b17-bb79-4861f90d0da8" />
 
 
 ## RESULT
